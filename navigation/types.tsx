@@ -6,7 +6,12 @@ import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export type BottomTabParamList = {
-    Home: { itemName: string };
+    Home: {
+        itemName: string,
+        provider: string,
+        producer: string,
+        dateListed: string
+    } | undefined;
     Details: undefined;
 };
 

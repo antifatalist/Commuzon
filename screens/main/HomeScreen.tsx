@@ -15,7 +15,9 @@ function HomeScreen({ navigation, route }: HomeScreenNavigationProp): JSX.Elemen
     if (route.params?.itemName) {
       // Post updated, do something with `route.params.post`
       // For example, send the post to the server
-      alert(route.params?.itemName);
+      if (route.params?.itemName != undefined) {
+        alert(JSON.stringify(route.params));
+      }
     }
   }, [route.params?.itemName]);
 
