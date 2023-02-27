@@ -22,7 +22,7 @@ function AuthScreen() {
       </View>
       <Button title="Login" onPress={() => stackNavigation.navigate('MainNav', {
         screen: 'Home',
-        params: { itemName: '' }
+        params: undefined
       })} />
     </View>
   );

@@ -1,8 +1,6 @@
 import type { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import type { StackScreenProps } from '@react-navigation/stack';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export type BottomTabParamList = {
@@ -13,6 +11,9 @@ export type BottomTabParamList = {
         dateListed: string
     } | undefined;
     Details: undefined;
+    Account: {
+        userId: string
+    };
 };
 
 export type RootStackParamList = {
@@ -26,6 +27,11 @@ export type RootStackParamList = {
 
 export type HomeScreenNavigationProp = CompositeScreenProps<
   BottomTabScreenProps<BottomTabParamList, 'Home'>,
+  NativeStackScreenProps<RootStackParamList>
+>;
+
+export type AccountScreenNavigationProp = CompositeScreenProps<
+  BottomTabScreenProps<BottomTabParamList, 'Account'>,
   NativeStackScreenProps<RootStackParamList>
 >;
 
