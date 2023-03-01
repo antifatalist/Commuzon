@@ -2,7 +2,7 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MainScreen from "./screens/main";
-import AuthScreen from "./screens/auth";
+import LoginScreen from "./screens/login";
 import AddItemScreen from "./screens/additem";
 import { RootStackParamList } from "./navigation/types";
 import { useFonts } from "expo-font";
@@ -26,8 +26,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Auth"
-          component={AuthScreen}
+          name="Login"
+          component={LoginScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen

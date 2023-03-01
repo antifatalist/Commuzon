@@ -23,7 +23,7 @@ export type BottomTabParamList = {
 
 export type RootStackParamList = {
   MainNav: NavigatorScreenParams<BottomTabParamList>;
-  Auth: undefined;
+  Login: undefined;
   //AddItem: { value: number};
   AddItem: undefined;
   //AddItem: { onAdd: (el: number) => void };
