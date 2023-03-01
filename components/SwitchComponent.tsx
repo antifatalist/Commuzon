@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { SearchBar } from '@rneui/themed';
-import { View, StyleSheet } from 'react-native';
+import React, { useState } from "react";
+import { SearchBar } from "@rneui/themed";
+import { View, StyleSheet } from "react-native";
 
 type SearchBarComponentProps = {};
 
-const SwitchComponent: React.FunctionComponent<SearchBarComponentProps> = () => {
+const SwitchComponent: React.FunctionComponent<
+  SearchBarComponentProps
+> = () => {
   const [search, setSearch] = useState("");
 
   const updateSearch = (search: string) => {
@@ -27,23 +29,23 @@ const SwitchComponent: React.FunctionComponent<SearchBarComponentProps> = () => 
 
 const styles = StyleSheet.create({
   view: {
-    backgroundColor: 'white',
-    width: '100%',
+    backgroundColor: "white",
+    width: "100%",
     borderWidth: 0,
-    borderColor: "white"
+    borderColor: "white",
   },
   searchBarInputContainerStyle: {
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   searchBarContainerStyle: {
     height: 65,
     backgroundColor: "white",
     borderTopColor: "white",
-    borderBottomColor: "white"
+    borderBottomColor: "white",
   },
   searchBarPlaceholderTextColor: {
-    color: "#444444"
-  }
+    color: "#444444",
+  },
 });
 
 export default SwitchComponent;
