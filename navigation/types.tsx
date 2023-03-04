@@ -19,14 +19,17 @@ export type BottomTabParamList = {
   Account: {
     userId: string;
   };
+  ForgotPassword: undefined;
+  PasswordSent: undefined;
+  Login: undefined;
 };
 
 export type RootStackParamList = {
   MainNav: NavigatorScreenParams<BottomTabParamList>;
   Login: undefined;
-  //AddItem: { value: number};
+  ForgotPassword: undefined;
+  PasswordSent: undefined;
   AddItem: undefined;
-  //AddItem: { onAdd: (el: number) => void };
   NotFound: undefined;
 };
 

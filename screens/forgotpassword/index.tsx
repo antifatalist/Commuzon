@@ -10,15 +10,15 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import type { RootStackScreenProps } from "../../navigation/types";
 
-function LoginScreen() {
+function ForgotPasswordScreen() {
   const stackNavigation =
-    useNavigation<RootStackScreenProps<"Login">["navigation"]>();
+    useNavigation<RootStackScreenProps<"ForgotPassword">["navigation"]>();
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   return (
     <View style={styles.container}>
+      {/* <Image style={styles.image} source={require("../../assets/log2.png")} /> */}
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -27,30 +27,11 @@ function LoginScreen() {
           onChangeText={(email) => setEmail(email)}
         />
       </View>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Enter password"
-          placeholderTextColor="#003f5c"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-        />
-      </View>
-      <TouchableOpacity
-        onPress={() => stackNavigation.navigate("ForgotPassword")}
-      >
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
-      </TouchableOpacity>
       <TouchableOpacity
         style={styles.loginBtn}
-        onPress={() =>
-          stackNavigation.navigate("MainNav", {
-            screen: "Home",
-            params: undefined,
-          })
-        }
+        onPress={() => stackNavigation.navigate("PasswordSent")}
       >
-        <Text style={styles.loginText}>LOGIN</Text>
+        <Text style={styles.loginText}>Submit</Text>
       </TouchableOpacity>
     </View>
   );
@@ -96,4 +77,4 @@ const styles = StyleSheet.create({
   loginText: {},
 });
 
-export default LoginScreen;
+export default ForgotPasswordScreen;

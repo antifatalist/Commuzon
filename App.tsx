@@ -3,6 +3,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MainScreen from "./screens/main";
 import LoginScreen from "./screens/login";
+import ForgotPasswordScreen from "./screens/forgotpassword";
+import PasswordSentScreen from "./screens/passwordsent";
 import AddItemScreen from "./screens/additem";
 import { RootStackParamList } from "./navigation/types";
 import { useFonts } from "expo-font";
@@ -29,6 +31,16 @@ export default function App() {
           name="Login"
           component={LoginScreen}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ForgotPassword"
+          component={ForgotPasswordScreen}
+          options={{ headerShown: true, title: "Forgot Password" }}
+        />
+        <Stack.Screen
+          name="PasswordSent"
+          component={PasswordSentScreen}
+          options={{ headerShown: true, title: "Password Sent!" }}
         />
         <Stack.Screen
           name="MainNav"
