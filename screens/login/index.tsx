@@ -14,17 +14,20 @@ function LoginScreen() {
   const stackNavigation =
     useNavigation<RootStackScreenProps<"Login">["navigation"]>();
 
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   return (
     <View style={styles.container}>
+      <View style={styles.logo}>
+        <Text style={styles.logoText}>Commuzon</Text>
+      </View>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Enter email"
+          placeholder="Enter username or email"
           placeholderTextColor="#003f5c"
-          onChangeText={(email) => setEmail(email)}
+          onChangeText={(username) => setUsername(username)}
         />
       </View>
       <View style={styles.inputView}>
@@ -57,9 +60,19 @@ function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
+  logo: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 40,
+  },
+  logoText: {
+    color: "#FFA5C0",
+    fontFamily: "Merriweather-Black",
+    fontSize: 60,
+  },
   container: {
     flex: 1,
-    backgroundColor: "#C15266",
+    backgroundColor: "#333333", //"#C15266",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -67,22 +80,23 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   inputView: {
-    backgroundColor: "#FFC0CB",
+    backgroundColor: "#FFFFFF",
     borderRadius: 30,
     width: "70%",
     height: 45,
     marginBottom: 20,
-    alignItems: "center",
+    //alignItems: "center",
   },
   TextInput: {
     height: 50,
     flex: 1,
     padding: 10,
-    marginLeft: 20,
+    textAlign: "center",
   },
   forgot_button: {
     height: 30,
     marginBottom: 30,
+    color: "#FFFFFF",
   },
   loginBtn: {
     width: "80%",
@@ -91,7 +105,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#FF1493",
+    backgroundColor: "#FFA5C0",
   },
   loginText: {},
 });
