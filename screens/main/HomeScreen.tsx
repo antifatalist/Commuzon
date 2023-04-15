@@ -24,8 +24,20 @@ function HomeScreen({
     }
   }, [route.params?.itemName]);
 
+  const onMakeCommunityRequestPress = () => {
+    navigation.navigate("MakeCommunityRequest");
+  };
+
   const onAddItemPress = () => {
     navigation.navigate("AddItem");
+  };
+
+  const onAddProductPress = () => {
+    navigation.navigate("AddProduct");
+  };
+
+  const onAddListingPress = () => {
+    navigation.navigate("AddListing");
   };
 
   return (
@@ -36,8 +48,38 @@ function HomeScreen({
       <View style={{ alignItems: "center", justifyContent: "center" }}>
         <Button
           backgroundColor={"#E07075"}
-          title={"Add New Item"}
+          title={"Make Community Request"}
+          onPress={onMakeCommunityRequestPress}
+          iconProps={{
+            iconName: "store-alert",
+            iconSize: 48,
+            iconColor: "white",
+          }}
+        ></Button>
+        <Button
+          backgroundColor={"#E07075"}
+          title={"Add Item"}
           onPress={onAddItemPress}
+          iconProps={{
+            iconName: "store-alert",
+            iconSize: 48,
+            iconColor: "white",
+          }}
+        ></Button>
+        <Button
+          backgroundColor={"#E07075"}
+          title={"Add Product"}
+          onPress={onAddProductPress}
+          iconProps={{
+            iconName: "store-alert",
+            iconSize: 48,
+            iconColor: "white",
+          }}
+        ></Button>
+        <Button
+          backgroundColor={"#E07075"}
+          title={"Add Listing"}
+          onPress={onAddListingPress}
           iconProps={{
             iconName: "store-alert",
             iconSize: 48,

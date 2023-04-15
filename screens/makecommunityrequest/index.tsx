@@ -5,41 +5,34 @@ import { useNavigation } from "@react-navigation/native";
 import type { RootStackScreenProps } from "../../navigation/types";
 import axios from "axios";
 
-const AddItemScreen = () => {
+const MakeCommunityRequestScreen = () => {
   const stackNavigation =
-    useNavigation<RootStackScreenProps<"AddItem">["navigation"]>();
+    useNavigation<RootStackScreenProps<"MakeCommunityRequest">["navigation"]>();
 
-  const [enteredItemNameText, setEnteredItemNameText] = useState("");
-  const [enteredProviderText, setEnteredProviderText] = useState("");
-  const [enteredProducerText, setEnteredProducerText] = useState("");
+  const [enteredDescriptionText, setEnteredDescriptionText] = useState("");
+  const [enteredAddresseesText, setEnteredAddresseesText] = useState("");
 
-  function itemNameInputHandler(enteredText: string) {
-    setEnteredItemNameText(enteredText);
+  function descriptionInputHandler(enteredText: string) {
+    setEnteredDescriptionText(enteredText);
   }
 
-  function providerInputHandler(enteredText: string) {
-    setEnteredProviderText(enteredText);
+  function addresseesInputHandler(enteredText: string) {
+    setEnteredAddresseesText(enteredText);
   }
 
-  function producerInputHandler(enteredText: string) {
-    setEnteredProducerText(enteredText);
-  }
-
-  type ItemResponse = {
-    name: string;
-    provider: string;
-    producer: string;
+  type CommunityRequestResponse = {
+    description: string;
+    addressees: string;
   };
 
-  async function createItem() {
+  async function postCommunityRequest() {
     try {
-      // 👇️ const data: Item
-      const { data, status } = await axios.post<ItemResponse>(
-        "http://143.42.114.251:3000/items",
+      // 👇️ const data: CommunityRequest
+      const { data, status } = await axios.post<CommunityRequestResponse>(
+        "http://143.42.114.251:3000/requests",
         {
-          name: enteredItemNameText,
-          provider: enteredProviderText,
-          producer: enteredProducerText,
+          description: enteredDescriptionText,
+          addressees: enteredAddresseesText,
         },
         {
           headers: {
@@ -66,15 +59,10 @@ const AddItemScreen = () => {
     }
   }
 
-  const onAddItemPress = () => {
-    createItem();
+  const onSubmitRequestPress = () => {
+    postCommunityRequest();
     stackNavigation.navigate("MainNav", {
       screen: "Home",
-      params: {
-        itemName: enteredItemNameText,
-        provider: enteredProviderText,
-        producer: enteredProducerText,
-      },
     });
   };
 
@@ -88,35 +76,33 @@ const AddItemScreen = () => {
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.textInput}
-        placeholder="Enter item name"
-        onChangeText={itemNameInputHandler}
-        value={enteredItemNameText}
+        placeholder="Enter description"
+        onChangeText={descriptionInputHandler}
+        value={enteredDescriptionText}
       />
       <TextInput
         style={styles.textInput}
-        placeholder="Enter provider"
-        onChangeText={providerInputHandler}
-        value={enteredProviderText}
-      />
-      <TextInput
-        style={styles.textInput}
-        placeholder="Enter producer"
-        onChangeText={producerInputHandler}
-        value={enteredProducerText}
+        placeholder="Enter addressees"
+        onChangeText={addresseesInputHandler}
+        value={enteredAddresseesText}
       />
       <View style={styles.buttonContainer}>
         <View style={styles.button}>
           <Button title="Cancel" onPress={onCancelPress} color="#f31282" />
         </View>
         <View style={styles.button}>
-          <Button title="Add Item" onPress={onAddItemPress} color="#b180f0" />
+          <Button
+            title="Submit Request"
+            onPress={onSubmitRequestPress}
+            color="#b180f0"
+          />
         </View>
       </View>
     </View>
   );
 };
 
-export default AddItemScreen;
+export default MakeCommunityRequestScreen;
 
 const styles = StyleSheet.create({
   inputContainer: {

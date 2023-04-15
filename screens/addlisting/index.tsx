@@ -5,16 +5,16 @@ import { useNavigation } from "@react-navigation/native";
 import type { RootStackScreenProps } from "../../navigation/types";
 import axios from "axios";
 
-const AddItemScreen = () => {
+const AddListingScreen = () => {
   const stackNavigation =
-    useNavigation<RootStackScreenProps<"AddItem">["navigation"]>();
+    useNavigation<RootStackScreenProps<"AddListing">["navigation"]>();
 
-  const [enteredItemNameText, setEnteredItemNameText] = useState("");
+  const [enteredListingNameText, setEnteredListingNameText] = useState("");
   const [enteredProviderText, setEnteredProviderText] = useState("");
   const [enteredProducerText, setEnteredProducerText] = useState("");
 
-  function itemNameInputHandler(enteredText: string) {
-    setEnteredItemNameText(enteredText);
+  function listingNameInputHandler(enteredText: string) {
+    setEnteredListingNameText(enteredText);
   }
 
   function providerInputHandler(enteredText: string) {
@@ -25,19 +25,19 @@ const AddItemScreen = () => {
     setEnteredProducerText(enteredText);
   }
 
-  type ItemResponse = {
+  type ListingResponse = {
     name: string;
     provider: string;
     producer: string;
   };
 
-  async function createItem() {
+  async function createListing() {
     try {
-      // 👇️ const data: Item
-      const { data, status } = await axios.post<ItemResponse>(
-        "http://143.42.114.251:3000/items",
+      // 👇️ const data: Listing
+      const { data, status } = await axios.post<ListingResponse>(
+        "http://143.42.114.251:3000/listing",
         {
-          name: enteredItemNameText,
+          name: enteredListingNameText,
           provider: enteredProviderText,
           producer: enteredProducerText,
         },
@@ -66,12 +66,12 @@ const AddItemScreen = () => {
     }
   }
 
-  const onAddItemPress = () => {
-    createItem();
+  const onAddListingPress = () => {
+    createListing();
     stackNavigation.navigate("MainNav", {
       screen: "Home",
       params: {
-        itemName: enteredItemNameText,
+        itemName: enteredListingNameText,
         provider: enteredProviderText,
         producer: enteredProducerText,
       },
@@ -88,9 +88,9 @@ const AddItemScreen = () => {
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.textInput}
-        placeholder="Enter item name"
-        onChangeText={itemNameInputHandler}
-        value={enteredItemNameText}
+        placeholder="Enter listing name"
+        onChangeText={listingNameInputHandler}
+        value={enteredListingNameText}
       />
       <TextInput
         style={styles.textInput}
@@ -109,14 +109,18 @@ const AddItemScreen = () => {
           <Button title="Cancel" onPress={onCancelPress} color="#f31282" />
         </View>
         <View style={styles.button}>
-          <Button title="Add Item" onPress={onAddItemPress} color="#b180f0" />
+          <Button
+            title="Add Listing"
+            onPress={onAddListingPress}
+            color="#b180f0"
+          />
         </View>
       </View>
     </View>
   );
 };
 
-export default AddItemScreen;
+export default AddListingScreen;
 
 const styles = StyleSheet.create({
   inputContainer: {

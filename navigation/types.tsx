@@ -12,7 +12,6 @@ export type BottomTabParamList = {
         itemName: string;
         provider: string;
         producer: string;
-        dateListed: string;
       }
     | undefined;
   Details: undefined;
@@ -30,6 +29,9 @@ export type RootStackParamList = {
   ForgotPassword: undefined;
   PasswordSent: undefined;
   AddItem: undefined;
+  AddProduct: undefined;
+  AddListing: undefined;
+  MakeCommunityRequest: undefined;
   NotFound: undefined;
 };
 

@@ -40,7 +40,7 @@ function ForgotPasswordScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#C15266",
+    backgroundColor: "#333333",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   inputView: {
-    backgroundColor: "#FFC0CB",
+    backgroundColor: "#FFFFFF",
     borderRadius: 30,
     width: "70%",
     height: 45,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#FF1493",
+    backgroundColor: "#FFA5C0",
   },
   loginText: {},
 });

@@ -27,11 +27,13 @@ function PasswordSentScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#C15266",
+    backgroundColor: "#333333",
     alignItems: "center",
     justifyContent: "center",
   },
-  message: {},
+  message: {
+    color: "#FFFFFF",
+  },
 });
 
 export default PasswordSentScreen;

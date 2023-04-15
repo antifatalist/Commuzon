@@ -6,6 +6,9 @@ import LoginScreen from "./screens/login";
 import ForgotPasswordScreen from "./screens/forgotpassword";
 import PasswordSentScreen from "./screens/passwordsent";
 import AddItemScreen from "./screens/additem";
+import AddProductScreen from "./screens/addproduct";
+import AddListingScreen from "./screens/addlisting";
+import MakeCommunityRequestScreen from "./screens/makecommunityrequest";
 import { RootStackParamList } from "./navigation/types";
 import { useFonts } from "expo-font";
 
@@ -51,6 +54,21 @@ export default function App() {
           name="AddItem"
           component={AddItemScreen}
           options={{ headerShown: true, title: "Add Item" }}
+        />
+        <Stack.Screen
+          name="AddProduct"
+          component={AddProductScreen}
+          options={{ headerShown: true, title: "Add Product" }}
+        />
+        <Stack.Screen
+          name="AddListing"
+          component={AddListingScreen}
+          options={{ headerShown: true, title: "Add Listing" }}
+        />
+        <Stack.Screen
+          name="MakeCommunityRequest"
+          component={MakeCommunityRequestScreen}
+          options={{ headerShown: true, title: "Make Community Request" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
