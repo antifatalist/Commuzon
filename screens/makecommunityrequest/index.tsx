@@ -29,8 +29,9 @@ const MakeCommunityRequestScreen = () => {
     try {
       // 👇️ const data: CommunityRequest
       const { data, status } = await axios.post<CommunityRequestResponse>(
-        "http://143.42.114.251:3000/requests",
+        "http://commuzon.com:5000/api/requests",
         {
+          requesterId: 1, // TODO: fix
           description: enteredDescriptionText,
           addressees: enteredAddresseesText,
         },
@@ -38,6 +39,8 @@ const MakeCommunityRequestScreen = () => {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikt5bGUiLCJpYXQiOjE2ODE2NzQ0MjgsImV4cCI6MTY4MTY3NTMyOH0.8wf14Yvwye7nLQDr5tN81QMNjJIkDW5C8FEblb7Ggls",
           },
         }
       );
