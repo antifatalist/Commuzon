@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { RootStackScreenProps } from "../../navigation/types";
+const login = require("../../api/auth");
 
 function LoginScreen() {
   const stackNavigation =
@@ -16,6 +17,15 @@ function LoginScreen() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const onLoginPress = async () => {
+    const data = await login(username, password);
+    alert(JSON.stringify(data, null, 4));
+    stackNavigation.navigate("MainNav", {
+      screen: "Home",
+      params: undefined,
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -44,15 +54,7 @@ function LoginScreen() {
       >
         <Text style={styles.forgot_button}>Forgot Password?</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.loginBtn}
-        onPress={() =>
-          stackNavigation.navigate("MainNav", {
-            screen: "Home",
-            params: undefined,
-          })
-        }
-      >
+      <TouchableOpacity style={styles.loginBtn} onPress={onLoginPress}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
     </View>

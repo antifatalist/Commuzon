@@ -40,7 +40,7 @@ const MakeCommunityRequestScreen = () => {
             "Content-Type": "application/json",
             Accept: "application/json",
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikt5bGUiLCJpYXQiOjE2ODE2NzQ0MjgsImV4cCI6MTY4MTY3NTMyOH0.8wf14Yvwye7nLQDr5tN81QMNjJIkDW5C8FEblb7Ggls",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikt5bGUiLCJpYXQiOjE2ODE2NzUwMDcsImV4cCI6MTY4MTY3NTkwN30.cK2tw1TU_OOKJO6CK-cm1EH61FE3hlrt_vlPtAG6oAk",
           },
         }
       );
