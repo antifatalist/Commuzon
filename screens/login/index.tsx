@@ -9,7 +9,8 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { RootStackScreenProps } from "../../navigation/types";
-const login = require("../../api/auth");
+import { login } from "../../api/auth";
+import * as SecureStore from "expo-secure-store";
 
 function LoginScreen() {
   const stackNavigation =
@@ -19,8 +20,12 @@ function LoginScreen() {
   const [password, setPassword] = useState("");
 
   const onLoginPress = async () => {
-    const data = await login(username, password);
-    alert(JSON.stringify(data, null, 4));
+    await login(username, password);
+    //alert(data);
+    //const refreshToken = await SecureStore.getItemAsync("refresh_token");
+    //console.log(data.accessToken);
+    //console.log(data.refreshToken);
+    //console.log(refreshToken);
     stackNavigation.navigate("MainNav", {
       screen: "Home",
       params: undefined,

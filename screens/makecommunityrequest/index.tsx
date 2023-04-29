@@ -4,6 +4,7 @@ import { View, Button, TextInput, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { RootStackScreenProps } from "../../navigation/types";
 import axios from "axios";
+import * as SecureStore from "expo-secure-store";
 
 const MakeCommunityRequestScreen = () => {
   const stackNavigation =
@@ -26,10 +27,11 @@ const MakeCommunityRequestScreen = () => {
   };
 
   async function postCommunityRequest() {
+    const accessToken = await SecureStore.getItemAsync("access_token");
     try {
       // 👇️ const data: CommunityRequest
       const { data, status } = await axios.post<CommunityRequestResponse>(
-        "http://commuzon.com:5000/api/requests",
+        "http://commuzon.com:5000/api/communityrequests",
         {
           requesterId: 1, // TODO: fix
           description: enteredDescriptionText,
@@ -39,8 +41,7 @@ const MakeCommunityRequestScreen = () => {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikt5bGUiLCJpYXQiOjE2ODE2NzUwMDcsImV4cCI6MTY4MTY3NTkwN30.cK2tw1TU_OOKJO6CK-cm1EH61FE3hlrt_vlPtAG6oAk",
+            Authorization: "Bearer " + accessToken,
           },
         }
       );

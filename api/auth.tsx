@@ -1,14 +1,10 @@
 import axios from "axios";
+import * as SecureStore from "expo-secure-store";
 
-type LoginResponse = {
-  accessToken: string;
-  refreshToken: string;
-};
-
-async function login(username: String, password: String) {
+export async function login(username: String, password: String) {
   try {
     // 👇️ const data: CommunityRequest
-    const { data, status } = await axios.post<LoginResponse>(
+    const response = await axios.post(
       "http://commuzon.com:4000/login",
       {
         username: username,
@@ -22,11 +18,22 @@ async function login(username: String, password: String) {
       }
     );
 
-    console.log(JSON.stringify(data, null, 4));
+    console.log(response.data);
 
-    console.log(status);
+    await SecureStore.setItemAsync("access_token", response.data.accessToken);
+    await SecureStore.setItemAsync("refresh_token", response.data.refreshToken);
+    //await SecureStore.setItemAsync("user_id", response.id_.toString());
 
-    return data;
+    const accessToken = await SecureStore.getItemAsync("access_token");
+    const refreshToken = await SecureStore.getItemAsync("refresh_token");
+    //const userId = await SecureStore.getItemAsync("user_id");
+
+    console.log("accessToken: " + accessToken);
+    console.log("refreshToken: " + refreshToken);
+    //console.log("userId: " + userId);
+
+    console.log(response.status);
+    return;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.log("error message: ", error.message);
@@ -39,4 +46,30 @@ async function login(username: String, password: String) {
   }
 }
 
-module.exports = login;
+export async function logout() {
+  const refreshToken = await SecureStore.getItemAsync("refresh_token");
+  try {
+    const response = await axios.delete("http://commuzon.com:4000/logout", {
+      data: {
+        refreshToken: refreshToken,
+      },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    console.log(response.status);
+
+    return;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log("error message: ", error.message);
+      // 👇️ error: AxiosError<any, any>
+      return error.message;
+    } else {
+      console.log("unexpected error: ", error);
+      return "An unexpected error occurred";
+    }
+  }
+}

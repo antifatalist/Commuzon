@@ -1,8 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import type { AccountScreenNavigationProp } from "../../navigation/types";
+import Button from "../../components/Button";
+import { useNavigation } from "@react-navigation/native";
+import type { RootStackScreenProps } from "../../navigation/types";
+import { logout } from "../../api/auth";
 
 function AccountScreen({ navigation, route }: AccountScreenNavigationProp) {
+  const stackNavigation =
+    useNavigation<RootStackScreenProps<"MainNav">["navigation"]>();
+
   React.useEffect(() => {
     if (route.params?.userId) {
       // Post updated, do something with `route.params.post`
@@ -13,8 +20,19 @@ function AccountScreen({ navigation, route }: AccountScreenNavigationProp) {
     }
   }, [route.params?.userId]);
 
+  const onLogoutPress = async () => {
+    const data = await logout();
+    stackNavigation.navigate("Login");
+  };
+
   return (
     <View style={styles.container}>
+      <Button
+        backgroundColor={"#E07075"}
+        title={"Logout"}
+        onPress={onLogoutPress}
+        iconProps={{}}
+      ></Button>
       <View style={styles.rect}>
         <View style={styles.usernameRow}>
           <Text style={styles.username}>Username:</Text>
