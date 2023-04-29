@@ -59,6 +59,13 @@ function LoginScreen() {
       >
         <Text style={styles.forgot_button}>Forgot Password?</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => stackNavigation.navigate("CreateAccount")}
+      >
+        <Text style={styles.create_button}>
+          New to Commuzon? Create an Account
+        </Text>
+      </TouchableOpacity>
       <TouchableOpacity style={styles.loginBtn} onPress={onLoginPress}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
@@ -101,6 +108,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   forgot_button: {
+    height: 30,
+    marginBottom: 30,
+    color: "#FFFFFF",
+  },
+  create_button: {
     height: 30,
     marginBottom: 30,
     color: "#FFFFFF",

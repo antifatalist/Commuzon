@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MainScreen from "./screens/main";
 import LoginScreen from "./screens/login";
+import CreateAccountScreen from "./screens/createaccount";
 import ForgotPasswordScreen from "./screens/forgotpassword";
 import PasswordSentScreen from "./screens/passwordsent";
 import AddItemScreen from "./screens/additem";
@@ -34,6 +35,11 @@ export default function App() {
           name="Login"
           component={LoginScreen}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CreateAccount"
+          component={CreateAccountScreen}
+          options={{ headerShown: true }}
         />
         <Stack.Screen
           name="ForgotPassword"

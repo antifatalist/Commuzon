@@ -26,6 +26,7 @@ export type BottomTabParamList = {
 export type RootStackParamList = {
   MainNav: NavigatorScreenParams<BottomTabParamList>;
   Login: undefined;
+  CreateAccount: undefined;
   ForgotPassword: undefined;
   PasswordSent: undefined;
   AddItem: undefined;

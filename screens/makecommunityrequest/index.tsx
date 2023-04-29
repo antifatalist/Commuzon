@@ -28,12 +28,13 @@ const MakeCommunityRequestScreen = () => {
 
   async function postCommunityRequest() {
     const accessToken = await SecureStore.getItemAsync("access_token");
+    const userId = await SecureStore.getItemAsync("user_id");
     try {
       // 👇️ const data: CommunityRequest
       const { data, status } = await axios.post<CommunityRequestResponse>(
         "http://commuzon.com:5000/api/communityrequests",
         {
-          requesterId: 1, // TODO: fix
+          requesterId: userId, // TODO: fix
           description: enteredDescriptionText,
           addressees: enteredAddresseesText,
         },
